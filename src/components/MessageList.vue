@@ -3,7 +3,7 @@ defineProps({
   messages: Array
 })
 
-const emit = defineEmits(['delete-message'])
+const emit = defineEmits(['delete-message', 'update-message'])
 
 const deleteMessage = (id) => {
   emit('delete-message', id)
@@ -19,12 +19,21 @@ const deleteMessage = (id) => {
         class="message-card"
       >
         <div class="message-header">
-          <span class="message-date">{{ message.date }}</span>
-          <span class="message-time">{{ message.time }}</span>
+          <div class="date-time">
+            <span class="message-date">{{ message.date }}</span>
+            <span class="message-time">{{ message.time }}</span>
+          </div>
         </div>
         
         <div class="message-content">
           {{ message.text }}
+        </div>
+
+        <!-- 标签显示 -->
+        <div v-if="message.tags && message.tags.length > 0" class="message-tags">
+          <span v-for="tag in message.tags" :key="tag" class="tag">
+            🏷️ {{ tag }}
+          </span>
         </div>
         
         <div class="message-footer">
@@ -75,6 +84,12 @@ const deleteMessage = (id) => {
   border-bottom: 1px solid #f0f0f0;
 }
 
+.date-time {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
 .message-date {
   font-weight: 600;
   color: #667eea;
@@ -91,6 +106,36 @@ const deleteMessage = (id) => {
   word-break: break-word;
   white-space: pre-wrap;
   margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+/* 标签样式 */
+.message-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  background: #f0f0f0;
+  color: #555;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .message-footer {

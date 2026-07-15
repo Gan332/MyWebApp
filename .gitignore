@@ -1,0 +1,9 @@
+/target/
+*.swp
+*.swo
+.DS_Store
+*.pdb
+accounts.json
+.idea/
+*.iml
+__pycache__/

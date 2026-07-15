@@ -478,7 +478,6 @@ impl eframe::App for TotpApp {
                 egui::Area::new(egui::Id::new("toast"))
                     .anchor(egui::Align2::CENTER_TOP, (0.0, 60.0))
                     .show(ctx, |ui| {
-                        let prev_opacity = ui.opacity();
                         ui.set_opacity(alpha);
                         egui::Frame::default()
                             .fill(egui::Color32::from_rgba_premultiplied(30, 30, 40, 220))
@@ -491,7 +490,6 @@ impl eframe::App for TotpApp {
                                         .size(14.0),
                                 );
                             });
-                        ui.set_opacity(prev_opacity);
                     });
             } else {
                 self.toast = None;

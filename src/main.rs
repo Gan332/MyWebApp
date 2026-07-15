@@ -127,6 +127,8 @@ struct TotpApp {
     // Add dialog
     show_add_dialog: bool,
     add_secret: String,
+    add_issuer: String,
+    add_label: String,
     toast: Option<(String, Instant)>,
     add_error: String,
 

@@ -7,3 +7,5 @@ accounts.json
 .idea/
 *.iml
 __pycache__/
+*.zip
+*.exe

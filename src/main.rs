@@ -416,7 +416,7 @@ impl eframe::App for TotpApp {
                                                 // Countdown circle
                                                 let circle_size = 32.0;
                                                 let (rect, _) = ui.allocate_exact_size(
-                                                    egui::vec2(circle_size, circle_size),
+                                                    egui::Vec2::new(circle_size, circle_size),
                                                     egui::Sense::hover(),
                                                 );
                                                 let painter = ui.painter();

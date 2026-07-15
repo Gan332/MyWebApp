@@ -196,7 +196,7 @@ impl TotpApp {
         let (label_part, query) = rest.split_once('?')?;
         let mut issuer = String::new();
         let mut secret = String::new();
-        let label;
+        let mut label = String::new();
 
         // label_part is "Issuer:Account" or just "Account"
         if let Some((iss, acc)) = label_part.split_once(':') {
@@ -340,7 +340,7 @@ impl eframe::App for TotpApp {
                                 .fill(egui::Color32::from_rgb(30, 30, 40))
                                 .rounding(8.0)
                                 .stroke(egui::Stroke::new(
-                                    1.0_f32,
+                                    1.0,
                                     egui::Color32::from_rgb(50, 50, 65),
                                 ))
                                 .inner_margin(egui::Margin::symmetric(16.0, 14.0))
@@ -416,7 +416,7 @@ impl eframe::App for TotpApp {
                                                 // Countdown circle
                                                 let circle_size = 32.0;
                                                 let (rect, _) = ui.allocate_exact_size(
-                                                    egui::Vec2::new(circle_size, circle_size),
+                                                    egui::vec2(circle_size, circle_size),
                                                     egui::Sense::hover(),
                                                 );
                                                 let painter = ui.painter();
@@ -428,7 +428,7 @@ impl eframe::App for TotpApp {
                                                     center,
                                                     radius,
                                                     egui::Stroke::new(
-                                                        3.0_f32,
+                                                        3.0,
                                                         egui::Color32::from_rgb(50, 50, 60),
                                                     ),
                                                 );
@@ -445,7 +445,7 @@ impl eframe::App for TotpApp {
                                                 painter.circle_stroke(
                                                     center,
                                                     radius,
-                                                    egui::Stroke::new(3.0_f32, color),
+                                                    egui::Stroke::new(3.0, color),
                                                 );
 
                                                 // Remaining text
@@ -475,23 +475,22 @@ impl eframe::App for TotpApp {
         if let Some((msg, start)) = &self.toast {
             if start.elapsed() < Duration::from_secs(2) {
                 let alpha = (1.0 - (start.elapsed().as_secs_f32() / 2.0)).min(1.0);
-                egui::Area::new(egui::Id::new("toast"))
+                egui::Area::new("toast")
                     .anchor(egui::Align2::CENTER_TOP, (0.0, 60.0))
                     .show(ctx, |ui| {
-                        let prev_opacity = ui.opacity();
-                        ui.set_opacity(alpha);
-                        egui::Frame::default()
-                            .fill(egui::Color32::from_rgba_premultiplied(30, 30, 40, 220))
-                            .rounding(6.0)
-                            .inner_margin(egui::Margin::symmetric(24.0, 12.0))
-                            .show(ui, |ui| {
-                                ui.label(
-                                    egui::RichText::new(msg.as_str())
-                                        .color(egui::Color32::WHITE)
-                                        .size(14.0),
-                                );
-                            });
-                        ui.set_opacity(prev_opacity);
+                        ui.with_alpha(alpha, |ui| {
+                            egui::Frame::default()
+                                .fill(egui::Color32::from_rgba_premultiplied(30, 30, 40, 220))
+                                .rounding(6.0)
+                                .inner_margin(egui::Margin::symmetric(24.0, 12.0))
+                                .show(ui, |ui| {
+                                    ui.label(
+                                        egui::RichText::new(msg.as_str())
+                                            .color(egui::Color32::WHITE)
+                                            .size(14.0),
+                                    );
+                                });
+                        });
                     });
             } else {
                 self.toast = None;

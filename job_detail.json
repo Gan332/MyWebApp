@@ -1,0 +1,92 @@
+{
+  "id": 87378727455,
+  "run_id": 29423203331,
+  "workflow_name": "Build and Release",
+  "head_branch": "master",
+  "run_url": "https://api.github.com/repos/Gan332/MyWebApp/actions/runs/29423203331",
+  "run_attempt": 1,
+  "node_id": "CR_kwDORslkls8AAAAUWC2SHw",
+  "head_sha": "e3c84de26e563579c1aee647bcc87505c782b4dd",
+  "url": "https://api.github.com/repos/Gan332/MyWebApp/actions/jobs/87378727455",
+  "html_url": "https://github.com/Gan332/MyWebApp/actions/runs/29423203331/job/87378727455",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-07-15T14:21:41Z",
+  "started_at": "2026-07-15T14:21:43Z",
+  "completed_at": "2026-07-15T14:24:09Z",
+  "name": "build (macos-latest, x86_64-apple-darwin, totp-auth, totp-auth-macos-amd64)",
+  "steps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 1,
+      "started_at": "2026-07-15T14:21:43Z",
+      "completed_at": "2026-07-15T14:21:47Z"
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 2,
+      "started_at": "2026-07-15T14:21:47Z",
+      "completed_at": "2026-07-15T14:21:50Z"
+    },
+    {
+      "name": "Install Rust toolchain",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 3,
+      "started_at": "2026-07-15T14:21:50Z",
+      "completed_at": "2026-07-15T14:22:04Z"
+    },
+    {
+      "name": "Build release",
+      "status": "completed",
+      "conclusion": "failure",
+      "number": 4,
+      "started_at": "2026-07-15T14:22:04Z",
+      "completed_at": "2026-07-15T14:23:29Z"
+    },
+    {
+      "name": "Upload binary as workflow artifact",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 5,
+      "started_at": "2026-07-15T14:23:29Z",
+      "completed_at": "2026-07-15T14:23:29Z"
+    },
+    {
+      "name": "Upload binary to release",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 6,
+      "started_at": "2026-07-15T14:23:29Z",
+      "completed_at": "2026-07-15T14:23:29Z"
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 12,
+      "started_at": "2026-07-15T14:23:29Z",
+      "completed_at": "2026-07-15T14:23:31Z"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 13,
+      "started_at": "2026-07-15T14:23:31Z",
+      "completed_at": "2026-07-15T14:23:32Z"
+    }
+  ],
+  "check_run_url": "https://api.github.com/repos/Gan332/MyWebApp/check-runs/87378727455",
+  "labels": [
+    "macos-latest"
+  ],
+  "runner_id": 1000000277,
+  "runner_name": "GitHub Actions 1000000277",
+  "runner_group_id": 0,
+  "runner_group_name": "GitHub Actions"
+}

@@ -1,0 +1,310 @@
+{
+  "total_count": 4,
+  "jobs": [
+    {
+      "id": 87388578003,
+      "run_id": 29426040966,
+      "workflow_name": "Build and Release",
+      "head_branch": "master",
+      "run_url": "https://api.github.com/repos/Gan332/MyWebApp/actions/runs/29426040966",
+      "run_attempt": 1,
+      "node_id": "CR_kwDORslkls8AAAAUWMPg0w",
+      "head_sha": "145c9b4719a5ad78fe626ab0e2cc836a1a7436be",
+      "url": "https://api.github.com/repos/Gan332/MyWebApp/actions/jobs/87388578003",
+      "html_url": "https://github.com/Gan332/MyWebApp/actions/runs/29426040966/job/87388578003",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-07-15T14:59:02Z",
+      "started_at": "2026-07-15T14:59:06Z",
+      "completed_at": "2026-07-15T15:02:14Z",
+      "name": "build (windows-latest, x86_64-pc-windows-msvc, totp-auth.exe, totp-auth-windows-amd64.exe)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-07-15T14:59:07Z",
+          "completed_at": "2026-07-15T14:59:11Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-07-15T14:59:11Z",
+          "completed_at": "2026-07-15T14:59:17Z"
+        },
+        {
+          "name": "Install Rust toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-07-15T14:59:17Z",
+          "completed_at": "2026-07-15T14:59:50Z"
+        },
+        {
+          "name": "Build release",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 4,
+          "started_at": "2026-07-15T14:59:50Z",
+          "completed_at": "2026-07-15T15:02:11Z"
+        },
+        {
+          "name": "Upload binary as workflow artifact",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 5,
+          "started_at": "2026-07-15T15:02:11Z",
+          "completed_at": "2026-07-15T15:02:11Z"
+        },
+        {
+          "name": "Upload binary to release",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-07-15T15:02:11Z",
+          "completed_at": "2026-07-15T15:02:11Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-07-15T15:02:11Z",
+          "completed_at": "2026-07-15T15:02:13Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-07-15T15:02:13Z",
+          "completed_at": "2026-07-15T15:02:13Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/Gan332/MyWebApp/check-runs/87388578003",
+      "labels": [
+        "windows-latest"
+      ],
+      "runner_id": 1000000300,
+      "runner_name": "GitHub Actions 1000000300",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 87388578014,
+      "run_id": 29426040966,
+      "workflow_name": "Build and Release",
+      "head_branch": "master",
+      "run_url": "https://api.github.com/repos/Gan332/MyWebApp/actions/runs/29426040966",
+      "run_attempt": 1,
+      "node_id": "CR_kwDORslkls8AAAAUWMPg3g",
+      "head_sha": "145c9b4719a5ad78fe626ab0e2cc836a1a7436be",
+      "url": "https://api.github.com/repos/Gan332/MyWebApp/actions/jobs/87388578014",
+      "html_url": "https://github.com/Gan332/MyWebApp/actions/runs/29426040966/job/87388578014",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-07-15T14:59:02Z",
+      "started_at": "2026-07-15T14:59:04Z",
+      "completed_at": "2026-07-15T15:01:47Z",
+      "name": "build (ubuntu-latest, x86_64-unknown-linux-gnu, totp-auth, totp-auth-linux-amd64)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-07-15T14:59:05Z",
+          "completed_at": "2026-07-15T14:59:06Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-07-15T14:59:06Z",
+          "completed_at": "2026-07-15T14:59:06Z"
+        },
+        {
+          "name": "Install Rust toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-07-15T14:59:06Z",
+          "completed_at": "2026-07-15T14:59:15Z"
+        },
+        {
+          "name": "Build release",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 4,
+          "started_at": "2026-07-15T14:59:15Z",
+          "completed_at": "2026-07-15T15:01:46Z"
+        },
+        {
+          "name": "Upload binary as workflow artifact",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 5,
+          "started_at": "2026-07-15T15:01:46Z",
+          "completed_at": "2026-07-15T15:01:46Z"
+        },
+        {
+          "name": "Upload binary to release",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-07-15T15:01:46Z",
+          "completed_at": "2026-07-15T15:01:46Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-07-15T15:01:46Z",
+          "completed_at": "2026-07-15T15:01:46Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-07-15T15:01:46Z",
+          "completed_at": "2026-07-15T15:01:46Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/Gan332/MyWebApp/check-runs/87388578014",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000299,
+      "runner_name": "GitHub Actions 1000000299",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 87388578050,
+      "run_id": 29426040966,
+      "workflow_name": "Build and Release",
+      "head_branch": "master",
+      "run_url": "https://api.github.com/repos/Gan332/MyWebApp/actions/runs/29426040966",
+      "run_attempt": 1,
+      "node_id": "CR_kwDORslkls8AAAAUWMPhAg",
+      "head_sha": "145c9b4719a5ad78fe626ab0e2cc836a1a7436be",
+      "url": "https://api.github.com/repos/Gan332/MyWebApp/actions/jobs/87388578050",
+      "html_url": "https://github.com/Gan332/MyWebApp/actions/runs/29426040966/job/87388578050",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-07-15T14:59:02Z",
+      "started_at": "2026-07-15T14:59:05Z",
+      "completed_at": "2026-07-15T15:01:51Z",
+      "name": "build (macos-latest, x86_64-apple-darwin, totp-auth, totp-auth-macos-amd64)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-07-15T14:59:06Z",
+          "completed_at": "2026-07-15T14:59:08Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-07-15T14:59:08Z",
+          "completed_at": "2026-07-15T14:59:10Z"
+        },
+        {
+          "name": "Install Rust toolchain",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-07-15T14:59:10Z",
+          "completed_at": "2026-07-15T14:59:26Z"
+        },
+        {
+          "name": "Build release",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 4,
+          "started_at": "2026-07-15T14:59:26Z",
+          "completed_at": "2026-07-15T15:01:46Z"
+        },
+        {
+          "name": "Upload binary as workflow artifact",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 5,
+          "started_at": "2026-07-15T15:01:46Z",
+          "completed_at": "2026-07-15T15:01:46Z"
+        },
+        {
+          "name": "Upload binary to release",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-07-15T15:01:46Z",
+          "completed_at": "2026-07-15T15:01:46Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-07-15T15:01:46Z",
+          "completed_at": "2026-07-15T15:01:47Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-07-15T15:01:47Z",
+          "completed_at": "2026-07-15T15:01:49Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/Gan332/MyWebApp/check-runs/87388578050",
+      "labels": [
+        "macos-latest"
+      ],
+      "runner_id": 1000000298,
+      "runner_name": "GitHub Actions 1000000298",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 87389425877,
+      "run_id": 29426040966,
+      "workflow_name": "Build and Release",
+      "head_branch": "master",
+      "run_url": "https://api.github.com/repos/Gan332/MyWebApp/actions/runs/29426040966",
+      "run_attempt": 1,
+      "node_id": "CR_kwDORslkls8AAAAUWNDQ1Q",
+      "head_sha": "145c9b4719a5ad78fe626ab0e2cc836a1a7436be",
+      "url": "https://api.github.com/repos/Gan332/MyWebApp/actions/jobs/87389425877",
+      "html_url": "https://github.com/Gan332/MyWebApp/actions/runs/29426040966/job/87389425877",
+      "status": "completed",
+      "conclusion": "skipped",
+      "created_at": "2026-07-15T15:02:15Z",
+      "started_at": "2026-07-15T15:02:15Z",
+      "completed_at": "2026-07-15T15:02:14Z",
+      "name": "create-release",
+      "steps": [
+
+      ],
+      "check_run_url": "https://api.github.com/repos/Gan332/MyWebApp/check-runs/87389425877",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": null,
+      "runner_name": null,
+      "runner_group_id": null,
+      "runner_group_name": null
+    }
+  ]
+}

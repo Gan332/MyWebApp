@@ -331,6 +331,7 @@ impl eframe::App for TotpApp {
                     .auto_shrink([false; 2])
                     .show(ui, |ui| {
                         let mut delete_idx: Option<usize> = None;
+                        let mut copy_toast: Option<String> = None;
                         for (i, account) in self.accounts.iter().enumerate() {
                             let code = account.totp_code();
                             let remaining = totp_remaining(TOTP_PERIOD);
@@ -407,7 +408,7 @@ impl eframe::App for TotpApp {
                                                 {
                                                     if let Ok(mut clipboard) = arboard::Clipboard::new() {
                                                         let _ = clipboard.set_text(&code);
-                                                        self.show_toast("已复制到剪贴板");
+                                                        copy_toast = Some("已复制到剪贴板".to_owned());
                                                     }
                                                 }
 
@@ -463,9 +464,12 @@ impl eframe::App for TotpApp {
                             ui.add_space(6.0);
                         }
 
-                        // Defer deletion to avoid borrow conflict
+                        // Defer mutations to avoid borrow conflicts
                         if let Some(idx) = delete_idx {
                             self.delete_account(idx);
+                        }
+                        if let Some(msg) = copy_toast {
+                            self.show_toast(&msg);
                         }
                     });
             }
@@ -498,11 +502,11 @@ impl eframe::App for TotpApp {
 
         // ── Add dialog ────────────────────────────────────────────────────
         if self.show_add_dialog {
-            let mut closed = false;
+            let mut local_open = self.show_add_dialog;
             egui::Window::new("添加账户")
                 .resizable(false)
                 .collapsible(false)
-                .open(&mut self.show_add_dialog)
+                .open(&mut local_open)
                 .show(ctx, |ui| {
                     let mut from_uri = false;
                     ui.label("粘贴密钥或 otpauth:// 链接：");
@@ -571,14 +575,13 @@ impl eframe::App for TotpApp {
                                 self.add_error = "密钥格式无效（需要 Base32 编码）".to_owned();
                             } else {
                                 // If URI parse didn't set issuer, use default
-                                if self.add_issuer.trim().is_empty() {
-                                    self.add_issuer = "未知".to_owned();
-                                }
-                                self.add_account(
-                                    self.add_issuer.trim(),
-                                    self.add_label.trim(),
-                                    &secret,
-                                );
+                                let org_issuer: String = if self.add_issuer.trim().is_empty() {
+                                    "未知".to_owned()
+                                } else {
+                                    self.add_issuer.trim().to_owned()
+                                };
+                                let org_label = self.add_label.trim().to_owned();
+                                self.add_account(&org_issuer, &org_label, &secret);
                                 self.show_toast("账户已添加");
                                 closed = true;
                                 self.show_add_dialog = false;
@@ -586,17 +589,20 @@ impl eframe::App for TotpApp {
                         }
                     });
                 });
-            if closed {
+            if closed || !local_open {
                 self.show_add_dialog = false;
             }
         }
 
         // ── Import dialog ─────────────────────────────────────────────────
+        let mut import_close = false;
+        let mut import_toast: Option<String> = None;
         if self.show_import_dialog {
+            let mut local_open = self.show_import_dialog;
             egui::Window::new("导入账户")
                 .resizable(false)
                 .collapsible(false)
-                .open(&mut self.show_import_dialog)
+                .open(&mut local_open)
                 .show(ctx, |ui| {
                     ui.label("粘贴 JSON 备份内容：");
                     ui.add(
@@ -613,13 +619,14 @@ impl eframe::App for TotpApp {
                     }
                     ui.horizontal(|ui| {
                         if ui.button("取消").clicked() {
-                            self.show_import_dialog = false;
+                            import_close = true;
                         }
                         if ui.button("导入").clicked() {
-                            match self.import_json(self.import_text.trim()) {
+                            let org_import = self.import_text.trim().to_owned();
+                            match self.import_json(&org_import) {
                                 Ok(count) => {
-                                    self.show_toast(&format!("成功导入 {} 个账户", count));
-                                    self.show_import_dialog = false;
+                                    import_toast = Some(format!("成功导入 {} 个账户", count));
+                                    import_close = true;
                                 }
                                 Err(e) => {
                                     self.import_error = e;
@@ -628,14 +635,23 @@ impl eframe::App for TotpApp {
                         }
                     });
                 });
+            if import_close || !local_open {
+                self.show_import_dialog = false;
+            }
+        }
+        if let Some(msg) = import_toast {
+            self.show_toast(&msg);
         }
 
         // ── Export dialog ─────────────────────────────────────────────────
+        let mut export_close = false;
+        let mut export_toast = false;
         if self.show_export_dialog {
+            let mut local_open = self.show_export_dialog;
             egui::Window::new("导出账户")
                 .resizable(false)
                 .collapsible(false)
-                .open(&mut self.show_export_dialog)
+                .open(&mut local_open)
                 .show(ctx, |ui| {
                     ui.label("复制以下 JSON 内容以备份：");
                     ui.add(
@@ -647,10 +663,16 @@ impl eframe::App for TotpApp {
                         if let Ok(mut clipboard) = arboard::Clipboard::new() {
                             let _ = clipboard.set_text(&self.export_text);
                         }
-                        self.show_toast("已复制到剪贴板");
-                        self.show_export_dialog = false;
+                        export_toast = true;
+                        export_close = true;
                     }
                 });
+            if export_close || !local_open {
+                self.show_export_dialog = false;
+            }
+        }
+        if export_toast {
+            self.show_toast("已复制到剪贴板");
         }
     }
 }
